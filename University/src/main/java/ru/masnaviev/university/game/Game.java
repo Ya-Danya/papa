@@ -9,10 +9,10 @@ import ru.masnaviev.university.game.interfaces.BuffDecorator;
 import ru.masnaviev.university.game.interfaces.GameLogger;
 import ru.masnaviev.university.game.interfaces.SpecialAbility;
 import ru.masnaviev.university.game.logs.ConsoleLogger;
+import ru.masnaviev.university.game.logs.FileLogger;
 import ru.masnaviev.university.game.unit.*;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -143,13 +143,39 @@ public class Game {
         }
     }
 
+    public void mainMenuOutput() {
+        System.out.println("\n=== Главное меню ===");
+        System.out.println("1. Новая игра");
+        System.out.println("2. Загрузить игру");
+        System.out.println("3. Настройки");
+        System.out.println("0. Выход");
+        System.out.print("Выберите пункт: ");
+    }
+
+    public void settingsMenu() {
+        System.out.println("Выберите логгер");
+        System.out.println("1. Консольный логгер");
+        System.out.println("2. Файловый логгер");
+        int selector = scanner.nextInt();
+        switch (selector) {
+            case 1:
+                logger = new ConsoleLogger();
+                break;
+            case 2:
+                System.out.println("Введите имя файла, куда будет записан лог");
+                try {
+                    String filename = scanner.next();
+                    logger = new FileLogger(filename);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+        }
+    }
+
     public void mainMenu() {
         while (true) {
-            System.out.println("\n=== Главное меню ===");
-            System.out.println("1. Новая игра");
-            System.out.println("2. Загрузить игру");
-            System.out.println("0. Выход");
-            System.out.print("Выберите пункт: ");
+            mainMenuOutput();
 
             int selector = scanner.nextInt();
 
@@ -170,7 +196,9 @@ public class Game {
                         System.out.println("Ошибка загрузки: " + e.getMessage());
                     }
                     break;
-
+                case 3:
+                    settingsMenu();
+                    break;
                 case 0:
                     System.exit(0);
                     break;
@@ -186,19 +214,16 @@ public class Game {
 
         while (!turnCompleted) {
             printBattlefield();
+
             performRandomTurnOrder();
 
-            System.out.println("\nКоманды управления:");
-            System.out.println("1 - Сделать ход");
-            System.out.println("save или 4 - Сохранить игру");
-            System.out.println("0 - Выйти из игры");
-            System.out.print("Введите команду: ");
+            printIngameMenue();
 
             String input = scanner.nextLine().trim().toLowerCase();
 
             switch (input) {
                 case "1":
-                    // Выполнение хода
+                    // Выполнение хода текущей команды
                     if (isTeam1Turn) {
                         performTeamAttack(team1, team2);
                     } else {
@@ -206,7 +231,10 @@ public class Game {
                     }
                     turnCompleted = true;
                     break;
-
+                case "2":
+                    // Автоигра до конца
+                    if (autogame()) return true;
+                    break;
                 case "save":
                 case "4":
                     System.out.print("Введите имя файла для сохранения: ");
@@ -218,11 +246,9 @@ public class Game {
                         System.out.println("Ошибка сохранения: " + e.getMessage());
                     }
                     break;
-
                 case "0":
                     System.out.println("Выход из игры...");
                     return true;
-
                 default:
                     System.out.println("Неизвестная команда, попробуйте снова.");
             }
@@ -236,6 +262,40 @@ public class Game {
             System.out.println("Прерывание сна");
         }
         return false;
+    }
+
+    private boolean autogame() {
+        while (!team1.getUnits().isEmpty() && !team2.getUnits().isEmpty()) {
+            printBattlefield();
+
+            performRandomTurnOrder();
+
+            Team attackingTeam = isTeam1Turn ? team1 : team2;
+            Team defendingTeam = isTeam1Turn ? team2 : team1;
+            performTeamAttack(attackingTeam, defendingTeam);
+            if (winCheck()) {
+                return true;
+            }
+            isTeam1Turn = !isTeam1Turn; // Переключение очереди
+
+            // Небольшая задержка для наглядности
+            try {
+                sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        return false;
+    }
+
+
+    private static void printIngameMenue() {
+        System.out.println("\nКоманды управления:");
+        System.out.println("1 - Сделать ход");
+        System.out.println("2 - Автоигра");
+        System.out.println("save или 4 - Сохранить игру");
+        System.out.println("0 - Выйти из игры");
+        System.out.print("Введите команду: ");
     }
 
     private boolean winCheck() {
@@ -315,8 +375,8 @@ public class Game {
                 }
             } else {
                 if (unit instanceof SpecialAbility specialAbilityUnit) {
-                    logger.log(String.format("%s использует специальную способность",
-                            unit.getDisplayName()));
+                    logger.log(String.format("%s %d использует специальную способность",
+                            unit.getDisplayName(), unit.hashCode()));
                     specialAbilityUnit.applyAbility(position, ownTeam, enemyTeam);
                 }
             }
@@ -325,17 +385,22 @@ public class Game {
         }
     }
 
+
+
     private void performMeleeAttack(Unit attacker, Unit target) {
         int damage = attacker.getMeleeAttack();
-        logger.log(String.format("%s атакует %s (Урон: %d)",
+        logger.log(String.format("%s %d атакует %s %d (Урон: %d)",
                 attacker.getDisplayName(),
+                attacker.hashCode(),
                 target.getDisplayName(),
+                target.hashCode(),
                 damage));
 
         target.takeDamage(damage);
 
-        logger.log(String.format("%s получает %d урона (Осталось HP: %d/%d)",
+        logger.log(String.format("%s %d получает %d урона (Осталось HP: %d/%d)",
                 target.getDisplayName(),
+                target.hashCode(),
                 damage,
                 target.getHealth(),
                 target.getMaxHealth()));
