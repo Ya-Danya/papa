@@ -1,0 +1,68 @@
+[ "ru.masnaviev.university.game.Game", {
+  "team1" : [ "ru.masnaviev.university.game.Team", {
+    "units" : [ "java.util.LinkedList", [ {
+      "type" : "town",
+      "health" : 250,
+      "maxHealth" : 250,
+      "defense" : 0,
+      "meleeAttack" : 0,
+      "cost" : 75,
+      "clone" : false,
+      "alive" : true,
+      "healthString" : "[TOWN] 250/250 HP",
+      "displayName" : "TownAdapter"
+    }, {
+      "type" : "heavyInfantry",
+      "maxHealth" : 200,
+      "health" : 200,
+      "defense" : 30,
+      "meleeAttack" : 50,
+      "cost" : 100,
+      "alive" : true,
+      "displayName" : "HeavyInfantry",
+      "healthString" : "200/200 HP",
+      "clone" : false
+    }, {
+      "type" : "lightInfantry",
+      "maxHealth" : 100,
+      "health" : 100,
+      "defense" : 10,
+      "meleeAttack" : 15,
+      "cost" : 50,
+      "alive" : true,
+      "displayName" : "LightInfantry",
+      "healthString" : "100/100 HP",
+      "clone" : false
+    } ] ],
+    "initialBalance" : 400,
+    "unitStatus" : [ "java.util.ArrayList", [ "WalkingTown [TOWN] 250/250 HP", "HeavyInfantry: 200/200 HP", "LightInfantry: 100/100 HP" ] ]
+  } ],
+  "team2" : [ "ru.masnaviev.university.game.Team", {
+    "units" : [ "java.util.LinkedList", [ {
+      "type" : "town",
+      "health" : 250,
+      "maxHealth" : 250,
+      "defense" : 0,
+      "meleeAttack" : 0,
+      "cost" : 75,
+      "clone" : false,
+      "alive" : true,
+      "healthString" : "[TOWN] 250/250 HP",
+      "displayName" : "TownAdapter"
+    }, {
+      "type" : "heavyInfantry",
+      "maxHealth" : 200,
+      "health" : 200,
+      "defense" : 30,
+      "meleeAttack" : 50,
+      "cost" : 100,
+      "alive" : true,
+      "displayName" : "HeavyInfantry",
+      "healthString" : "200/200 HP",
+      "clone" : false
+    } ] ],
+    "initialBalance" : 400,
+    "unitStatus" : [ "java.util.ArrayList", [ "WalkingTown [TOWN] 250/250 HP", "HeavyInfantry: 200/200 HP" ] ]
+  } ],
+  "isTeam1Turn" : false
+} ]

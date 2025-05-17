@@ -1,0 +1,129 @@
+Connecting to http://www.youtube.com... Connected!
+Downloading populars... Done!
+
+-------------------------------
+Most popular videos on YouTube (imagine fancy HTML)
+ID: sadgahasgdas / Title: Catzzzz.avi
+ID: asdfas3ffasd / Title: Dancing article.mpq
+ID: 3sdfgsd1j333 / Title: Programing lesson#1.avi
+ID: mkafksangasj / Title: Dog play with ball.mp4
+ID: dlsdk5jfslaf / Title: Barcelona vs RealM.mov
+-------------------------------
+
+Connecting to http://www.youtube.com/catzzzzzzzzz... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: catzzzzzzzzz
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Connecting to http://www.youtube.com... Connected!
+Downloading populars... Done!
+
+-------------------------------
+Most popular videos on YouTube (imagine fancy HTML)
+ID: sadgahasgdas / Title: Catzzzz.avi
+ID: asdfas3ffasd / Title: Dancing article.mpq
+ID: 3sdfgsd1j333 / Title: Programing lesson#1.avi
+ID: mkafksangasj / Title: Dog play with ball.mp4
+ID: dlsdk5jfslaf / Title: Barcelona vs RealM.mov
+-------------------------------
+
+Connecting to http://www.youtube.com/dancesvideoo... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: dancesvideoo
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Connecting to http://www.youtube.com/catzzzzzzzzz... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: catzzzzzzzzz
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Connecting to http://www.youtube.com/someothervid... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: someothervid
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Time elapsed: 9354ms
+Connecting to http://www.youtube.com... Connected!
+Downloading populars... Done!
+
+-------------------------------
+Most popular videos on YouTube (imagine fancy HTML)
+ID: sadgahasgdas / Title: Catzzzz.avi
+ID: asdfas3ffasd / Title: Dancing article.mpq
+ID: 3sdfgsd1j333 / Title: Programing lesson#1.avi
+ID: mkafksangasj / Title: Dog play with ball.mp4
+ID: dlsdk5jfslaf / Title: Barcelona vs RealM.mov
+-------------------------------
+
+Connecting to http://www.youtube.com/catzzzzzzzzz... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: catzzzzzzzzz
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Retrieved list from cache.
+
+-------------------------------
+Most popular videos on YouTube (imagine fancy HTML)
+ID: sadgahasgdas / Title: Catzzzz.avi
+ID: asdfas3ffasd / Title: Dancing article.mpq
+ID: 3sdfgsd1j333 / Title: Programing lesson#1.avi
+ID: mkafksangasj / Title: Dog play with ball.mp4
+ID: dlsdk5jfslaf / Title: Barcelona vs RealM.mov
+-------------------------------
+
+Connecting to http://www.youtube.com/dancesvideoo... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: dancesvideoo
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Retrieved article 'catzzzzzzzzz' from cache.
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: catzzzzzzzzz
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Connecting to http://www.youtube.com/someothervid... Connected!
+Downloading article... Done!
+
+-------------------------------
+Video page (imagine fancy HTML)
+ID: someothervid
+Title: Some article title
+Video: Random article.
+-------------------------------
+
+Time elapsed: 5875ms
+Time saved by caching proxy: 3479ms
